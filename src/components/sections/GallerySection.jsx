@@ -6,7 +6,7 @@ import { useLanguage } from '@/hooks/useLanguage';
 import content from '@/content/content';
 
 const PHOTOS = [
-  { src: '/images/gallery/gallery-01.jpg', alt: 'Parul & Shubham together',   aspect: '3/4' },
+  { src: '/images/gallery/gallery-01.jpg', alt: 'Shubham & Parul together',   aspect: '3/4' },
   { src: '/images/gallery/gallery-02.jpg', alt: 'Ring exchange moment',        aspect: '3/4' },
   { src: '/images/gallery/gallery-03.jpg', alt: 'At the ceremony',             aspect: '16/9' },
   { src: '/images/gallery/gallery-04.jpg', alt: 'Ring ceremony kneeling',      aspect: '3/4' },

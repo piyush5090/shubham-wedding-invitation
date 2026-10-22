@@ -9,21 +9,21 @@ export function generateICS({ name, dateISO, durationMinutes = 120, venue, addre
   const fmt = (d) =>
     d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
 
-  const uid = `${name.replace(/\s/g, '-').toLowerCase()}-parul-shubham-2026@wedding`;
+  const uid = `${name.replace(/\s/g, '-').toLowerCase()}-shubham-parul-2026@wedding`;
 
   const ics = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//Parul Shubham Wedding//EN',
+    'PRODID:-//Shubham Parul Wedding//EN',
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
     'BEGIN:VEVENT',
     `UID:${uid}`,
-    `SUMMARY:${name} — Parul & Shubham Wedding`,
+    `SUMMARY:${name} — Shubham & Parul Wedding`,
     `DTSTART:${fmt(start)}`,
     `DTEND:${fmt(end)}`,
     `LOCATION:${[venue, address].filter(Boolean).join(', ')}`,
-    `DESCRIPTION:${description || name + ' — Parul weds Shubham'}`,
+    `DESCRIPTION:${description || name + ' — Shubham weds Parul'}`,
     'STATUS:CONFIRMED',
     'END:VEVENT',
     'END:VCALENDAR',
@@ -40,8 +40,6 @@ export function generateICS({ name, dateISO, durationMinutes = 120, venue, addre
 
 /** ISO strings for each event for calendar generation */
 export const EVENT_ISO = {
-  'mata-pujan':    '2026-11-15T09:30:00+05:30',
-  'sneh-bhoj':     '2026-11-15T12:30:00+05:30',
   'lagna-sagaai':  '2026-11-20T16:00:00+05:30',
   'baraat':        '2026-11-20T19:00:00+05:30',
   'ashirwad':      '2026-11-20T19:30:00+05:30',

@@ -190,19 +190,19 @@ export default function ModernRsvpVenue() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3.5">
                   <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5">
                     <span className="text-[10px] uppercase tracking-wider text-gold-warm/80 font-mono block mb-1">
-                      {cWelcome.hostsBrideLabel}
+                      {cWelcome.hostsGroomLabel}
                     </span>
                     <p className="text-xs sm:text-sm text-ivory/90 font-light">
-                      {cWelcome.hostsBride}
+                      {cWelcome.hostsGroom}
                     </p>
                   </div>
 
                   <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5">
                     <span className="text-[10px] uppercase tracking-wider text-gold-warm/80 font-mono block mb-1">
-                      {cWelcome.hostsGroomLabel}
+                      {cWelcome.hostsBrideLabel}
                     </span>
                     <p className="text-xs sm:text-sm text-ivory/90 font-light">
-                      {cWelcome.hostsGroom}
+                      {cWelcome.hostsBride}
                     </p>
                   </div>
                 </div>

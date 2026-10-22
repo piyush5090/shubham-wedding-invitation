@@ -71,19 +71,19 @@ const notoSansDevanagari = Noto_Sans_Devanagari({
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 export const metadata = {
-  title: 'Parul weds Shubham — 20 November 2026',
+  title: 'Shubham weds Parul — 20 November 2026',
   description:
-    'With the blessings of our families, we joyfully invite you to the wedding celebration of Parul Sharma & Shubham Sharma on 20 November 2026 at Swarnabhoomi, Aligarh.',
+    'With the blessings of our families, we joyfully invite you to the wedding celebration of Shubham Sharma & Parul Sharma on 20 November 2026 at Swarnabhoomi, Aligarh.',
   openGraph: {
-    title: 'Parul weds Shubham 💍 — 20 November 2026',
+    title: 'Shubham weds Parul 💍 — 20 November 2026',
     description:
-      'Join us for the wedding of Parul Sharma & Shubham Sharma. 20 November 2026 | Swarnabhoomi, Aligarh.',
+      'Join us for the wedding of Shubham Sharma & Parul Sharma. 20 November 2026 | Swarnabhoomi, Aligarh.',
     images: [
       {
         url: OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: 'Parul & Shubham Wedding',
+        alt: 'Shubham & Parul Wedding',
       },
     ],
     type: 'website',
@@ -91,7 +91,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Parul weds Shubham 💍',
+    title: 'Shubham weds Parul 💍',
     description: '20 November 2026 | Swarnabhoomi, Aligarh',
     images: [OG_IMAGE],
   },

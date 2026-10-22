@@ -4,7 +4,6 @@ import ModernIntro from '@/components/intro/ModernIntro';
 import ModernNavbar from '@/components/ui/ModernNavbar';
 import ModernHero from '@/components/hero/ModernHero';
 import BrideGroomSection from '@/components/sections/BrideGroomSection';
-import MataPoojanSection from '@/components/sections/MataPoojanSection';
 import WeddingCelebrations from '@/components/sections/WeddingCelebrations';
 import VidaaiSection from '@/components/sections/VidaaiSection';
 import ModernCountdown from '@/components/sections/ModernCountdown';
@@ -48,13 +47,10 @@ export default function WeddingPage() {
       {/* 1. Hero Showcase */}
       <ModernHero guestName={guestName} />
 
-      {/* 2. Bride & Groom Introduction */}
+      {/* 2. Groom & Bride Introduction */}
       <BrideGroomSection />
 
-      {/* 2b. Mata Poojan & Snehbhoj at Bride's Home */}
-      <MataPoojanSection />
-
-      {/* 2c. The Wedding Celebrations */}
+      {/* 3. The Wedding Celebrations */}
       <WeddingCelebrations />
 
       {/* 2d. Vidaai */}

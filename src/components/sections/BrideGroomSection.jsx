@@ -87,8 +87,8 @@ export default function BrideGroomSection() {
 
   return (
     <section
-      id="bride-and-groom"
-      aria-label={isHindi ? 'वधू एवं वर परिचय' : 'The Bride & Groom'}
+      id="groom-and-bride"
+      aria-label={isHindi ? 'वर एवं वधू परिचय' : 'The Groom & Bride'}
       className="relative w-full bg-[#0d0d0f] text-white selection:bg-[#8a6f2e]/40 selection:text-white border-t border-white/5 overflow-hidden"
       style={{
         paddingTop: '88px',
@@ -135,7 +135,7 @@ export default function BrideGroomSection() {
             marginBottom: '20px',
           }}
         >
-          {c.heading || (isHindi ? 'वधू एवं वर परिचय' : 'The Bride & Groom')}
+          {c.heading || (isHindi ? 'वर एवं वधू परिचय' : 'The Groom & Bride')}
         </h2>
 
         {/* EN | हिंदी Language Toggle */}
@@ -160,115 +160,7 @@ export default function BrideGroomSection() {
           style={{ width: '100%' }}
         >
           {/* ────────────────────────────────────────────────────────
-              BRIDE CARD (Left)
-              Padding: 36px top, 28px sides, 32px bottom
-              ──────────────────────────────────────────────────────── */}
-          <article
-            className="w-full flex flex-col items-center justify-between bg-white/[0.03] border border-[#8a6f2e]/60 rounded-[28px] shadow-[0_20px_50px_rgba(0,0,0,0.45)] transition-all duration-300 hover:border-[#8a6f2e]/90"
-            style={{
-              padding: '36px 28px 32px',
-              backdropFilter: 'blur(8px)',
-              WebkitBackdropFilter: 'blur(8px)',
-            }}
-          >
-            {/* Top Identity Block */}
-            <div className="w-full flex flex-col items-center text-center">
-              {/* Photo Arch (gap to label: 20px) */}
-              <PortraitFrame
-                photoSrc={COUPLE_PHOTOS.bride}
-                altText={c.bride.alt || c.bride.name}
-              />
-
-              {/* Label Pill (gap to name: 8px) */}
-              <span
-                className="inline-block text-[11px] sm:text-xs font-bold uppercase tracking-[0.25em] text-[#c5a059] bg-[#8a6f2e]/10 border border-[#8a6f2e]/60 text-center select-none"
-                style={{
-                  padding: '6px 18px',
-                  lineHeight: '1.2',
-                  overflow: 'visible',
-                  borderRadius: '9999px',
-                  marginBottom: '8px',
-                }}
-              >
-                {c.bride.label}
-              </span>
-
-              {/* Name (gap to family block: 24px) */}
-              <h3
-                className="text-3xl sm:text-4xl max-[480px]:text-[26px] font-light text-white text-center tracking-wide leading-tight"
-                style={{
-                  fontFamily: nameFont,
-                  marginBottom: '24px',
-                }}
-              >
-                {c.bride.name}
-              </h3>
-            </div>
-
-            {/* Family Details Block (stays completely inside card padding, 18px radius) */}
-            <div
-              className="w-full bg-[#121215]/85 border border-white/5 flex flex-col items-center text-center"
-              style={{
-                borderRadius: '18px',
-                padding: '22px 20px',
-              }}
-            >
-              {/* Relation Group 1: Grandparents */}
-              <div className="w-full text-center">
-                <span
-                  className="block text-[11px] uppercase tracking-[0.22em] text-[#c5a059] font-medium"
-                  style={{ marginBottom: '6px' }}
-                >
-                  {c.bride.grandparentsLabel}
-                </span>
-                <p
-                  className="text-[15px] sm:text-base text-white/95 leading-relaxed font-light break-words"
-                  style={{
-                    fontFamily: familyFont,
-                    lineHeight: isHindi ? '1.68' : '1.5',
-                  }}
-                >
-                  {c.bride.grandparents}
-                </p>
-              </div>
-
-              {/* Thin Divider separating the two groups with equal spacing */}
-              <div
-                className="w-16 h-[1px] bg-[#8a6f2e]/40 mx-auto"
-                style={{ marginBlock: '16px' }}
-              />
-
-              {/* Relation Group 2: Parents */}
-              <div className="w-full text-center">
-                <span
-                  className="block text-[11px] uppercase tracking-[0.22em] text-[#c5a059] font-medium"
-                  style={{ marginBottom: '6px' }}
-                >
-                  {c.bride.parentsLabel}
-                </span>
-                <p
-                  className="text-[15px] sm:text-base text-white/95 leading-relaxed font-light break-words"
-                  style={{
-                    fontFamily: familyFont,
-                    lineHeight: isHindi ? '1.68' : '1.5',
-                  }}
-                >
-                  {c.bride.parents}
-                  {c.bride.city && (
-                    <span
-                      className="block text-white/70 text-xs sm:text-[13px] tracking-wide font-normal"
-                      style={{ marginTop: '4px' }}
-                    >
-                      ({c.bride.city})
-                    </span>
-                  )}
-                </p>
-              </div>
-            </div>
-          </article>
-
-          {/* ────────────────────────────────────────────────────────
-              GROOM CARD (Right)
+              GROOM CARD (Left)
               Padding: 36px top, 28px sides, 32px bottom
               ──────────────────────────────────────────────────────── */}
           <article
@@ -368,6 +260,114 @@ export default function BrideGroomSection() {
                       style={{ marginTop: '4px' }}
                     >
                       ({c.groom.city})
+                    </span>
+                  )}
+                </p>
+              </div>
+            </div>
+          </article>
+
+          {/* ────────────────────────────────────────────────────────
+              BRIDE CARD (Right)
+              Padding: 36px top, 28px sides, 32px bottom
+              ──────────────────────────────────────────────────────── */}
+          <article
+            className="w-full flex flex-col items-center justify-between bg-white/[0.03] border border-[#8a6f2e]/60 rounded-[28px] shadow-[0_20px_50px_rgba(0,0,0,0.45)] transition-all duration-300 hover:border-[#8a6f2e]/90"
+            style={{
+              padding: '36px 28px 32px',
+              backdropFilter: 'blur(8px)',
+              WebkitBackdropFilter: 'blur(8px)',
+            }}
+          >
+            {/* Top Identity Block */}
+            <div className="w-full flex flex-col items-center text-center">
+              {/* Photo Arch (gap to label: 20px) */}
+              <PortraitFrame
+                photoSrc={COUPLE_PHOTOS.bride}
+                altText={c.bride.alt || c.bride.name}
+              />
+
+              {/* Label Pill (gap to name: 8px) */}
+              <span
+                className="inline-block text-[11px] sm:text-xs font-bold uppercase tracking-[0.25em] text-[#c5a059] bg-[#8a6f2e]/10 border border-[#8a6f2e]/60 text-center select-none"
+                style={{
+                  padding: '6px 18px',
+                  lineHeight: '1.2',
+                  overflow: 'visible',
+                  borderRadius: '9999px',
+                  marginBottom: '8px',
+                }}
+              >
+                {c.bride.label}
+              </span>
+
+              {/* Name (gap to family block: 24px) */}
+              <h3
+                className="text-3xl sm:text-4xl max-[480px]:text-[26px] font-light text-white text-center tracking-wide leading-tight"
+                style={{
+                  fontFamily: nameFont,
+                  marginBottom: '24px',
+                }}
+              >
+                {c.bride.name}
+              </h3>
+            </div>
+
+            {/* Family Details Block (stays completely inside card padding, 18px radius) */}
+            <div
+              className="w-full bg-[#121215]/85 border border-white/5 flex flex-col items-center text-center"
+              style={{
+                borderRadius: '18px',
+                padding: '22px 20px',
+              }}
+            >
+              {/* Relation Group 1: Grandparents */}
+              <div className="w-full text-center">
+                <span
+                  className="block text-[11px] uppercase tracking-[0.22em] text-[#c5a059] font-medium"
+                  style={{ marginBottom: '6px' }}
+                >
+                  {c.bride.grandparentsLabel}
+                </span>
+                <p
+                  className="text-[15px] sm:text-base text-white/95 leading-relaxed font-light break-words"
+                  style={{
+                    fontFamily: familyFont,
+                    lineHeight: isHindi ? '1.68' : '1.5',
+                  }}
+                >
+                  {c.bride.grandparents}
+                </p>
+              </div>
+
+              {/* Thin Divider separating the two groups with equal spacing */}
+              <div
+                className="w-16 h-[1px] bg-[#8a6f2e]/40 mx-auto"
+                style={{ marginBlock: '16px' }}
+              />
+
+              {/* Relation Group 2: Parents */}
+              <div className="w-full text-center">
+                <span
+                  className="block text-[11px] uppercase tracking-[0.22em] text-[#c5a059] font-medium"
+                  style={{ marginBottom: '6px' }}
+                >
+                  {c.bride.parentsLabel}
+                </span>
+                <p
+                  className="text-[15px] sm:text-base text-white/95 leading-relaxed font-light break-words"
+                  style={{
+                    fontFamily: familyFont,
+                    lineHeight: isHindi ? '1.68' : '1.5',
+                  }}
+                >
+                  {c.bride.parents}
+                  {c.bride.city && (
+                    <span
+                      className="block text-white/70 text-xs sm:text-[13px] tracking-wide font-normal"
+                      style={{ marginTop: '4px' }}
+                    >
+                      ({c.bride.city})
                     </span>
                   )}
                 </p>

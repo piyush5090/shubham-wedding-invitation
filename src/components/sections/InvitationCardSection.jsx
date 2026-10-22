@@ -37,7 +37,7 @@ export default function InvitationCardSection() {
   const download = () => {
     const a = document.createElement('a');
     a.href = CARDS[active].src;
-    a.download = `parul-shubham-invitation-${active + 1}.jpg`;
+    a.download = `shubham-parul-invitation-${active + 1}.jpg`;
     a.click();
   };
 

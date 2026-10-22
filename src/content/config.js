@@ -7,18 +7,18 @@
 // Audio — if the file is missing the music button is hidden gracefully
 export const MUSIC_SRC = '/audio/bg_song.mp3';
 
-// Bride & Groom individual portrait photos for the introduction section
+// Groom & Bride individual portrait photos for the introduction section
 // Leave empty string '' to show the elegant dark panel with outline person icon
 export const COUPLE_PHOTOS = {
-  bride: '/images/parul_solo.jpeg',
   groom: '/images/shubham_solo.jpeg',
+  bride: '/images/parul_solo.jpeg',
 };
 
 // RSVP WhatsApp (E.164 format, no spaces)
 export const RSVP_PHONE = '916263392962';
 
 // Wedding hashtag
-export const HASHTAG = '#ParulWedShubham';
+export const HASHTAG = '#ShubhamWedParul';
 
 // Main wedding date-time (ISO, IST = UTC+5:30)
 export const WEDDING_DATE = new Date('2026-11-20T16:00:00+05:30');
@@ -47,9 +47,6 @@ export const FEATURES = {
 
 // Venue overrides (empty string hides street address line)
 export const venues = {
-  mataPoojan: {
-    address: '', // empty by default: shows only "Nij Niwas (Family Residence), Ujjain"
-  },
   vidaai: {
     name: '',
     address: '',

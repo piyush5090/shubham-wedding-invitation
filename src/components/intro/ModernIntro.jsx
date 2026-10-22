@@ -57,7 +57,7 @@ export default function ModernIntro({ onComplete }) {
         <div className="absolute inset-0">
           <Image
             src="/images/couple/couple-hero.jpg"
-            alt="Parul and Shubham"
+            alt="Shubham and Parul"
             fill
             priority
             className="object-cover opacity-25 filter grayscale contrast-125 scale-105"

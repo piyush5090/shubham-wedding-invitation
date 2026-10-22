@@ -134,7 +134,7 @@ export default function HeroSection({ guestName }) {
             <div className="relative w-[220px] h-[290px] md:w-[280px] md:h-[370px]">
               <Image
                 src={cutoutExists ? '/images/couple/couple-cutout.png' : '/images/couple/couple-hero.jpg'}
-                alt="Parul and Shubham"
+                alt="Shubham and Parul"
                 fill
                 className={`object-contain object-bottom ${!cutoutExists ? 'rounded-t-full' : ''}`}
                 priority
@@ -165,7 +165,7 @@ export default function HeroSection({ guestName }) {
             lineHeight: 1.1,
           }}
         >
-          {lang === 'hi' ? 'पारुल एवं शुभम' : 'Parul & Shubham'}
+          {lang === 'hi' ? 'शुभम एवं पारुल' : 'Shubham & Parul'}
         </motion.h2>
 
         <OrnamentalDivider variant="simple" />

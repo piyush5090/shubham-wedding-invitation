@@ -151,7 +151,7 @@ export default function ModernHero({ guestName }) {
             <div className="relative w-full h-full rounded-t-full rounded-b-lg overflow-hidden bg-neutral-900 shadow-[inset_0_0_0_1px_rgba(0,0,0,0.15)] group">
               <Image
                 src="/images/ps_mid.jpeg"
-                alt="Wedding portrait of bride Parul in a rose-pink lehenga holding a bouquet and groom Shubham in a tailored suit smiling together"
+                alt="Wedding portrait of groom Shubham in a tailored suit and bride Parul in a rose-pink lehenga holding a bouquet smiling together"
                 fill
                 priority
                 sizes="(max-width: 768px) 85vw, 480px"

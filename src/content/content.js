@@ -9,15 +9,15 @@
 const content = {
   en: {
     meta: {
-      title: 'Parul weds Shubham — 20 November 2026',
+      title: 'Shubham weds Parul — 20 November 2026',
       description:
-        'With the blessings of our families, we joyfully invite you to the wedding celebration of Parul Sharma & Shubham Sharma on 20 November 2026 at Swarnabhoomi, Aligarh.',
+        'With the blessings of our families, we joyfully invite you to the wedding celebration of Shubham Sharma & Parul Sharma on 20 November 2026 at Swarnabhoomi, Aligarh.',
     },
 
     curtain: {
       blessing: 'With the blessings of our families',
       invite: 'We joyfully invite you to the wedding of',
-      brideGroom: 'Parul & Shubham',
+      brideGroom: 'Shubham & Parul',
       date: '20 · November · 2026',
       cta: 'Open Invitation',
       ctaSub: 'Tap to begin',
@@ -25,7 +25,7 @@ const content = {
 
     hero: {
       saveTheDate: 'Save the Date',
-      names: 'Parul & Shubham',
+      names: 'Shubham & Parul',
       date: 'Friday, 20 November 2026',
       guestGreeting: (name) => `Dear ${name},`,
       defaultGreeting: 'You are warmly invited',
@@ -40,20 +40,7 @@ const content = {
       invite:
         'By the grace of the Almighty and the blessings of our elders, a joyous occasion has come to our family.',
       sectionLabel: 'WITH THE BLESSINGS OF OUR FAMILIES',
-      heading: 'The Bride & Groom',
-
-      bride: {
-        label: 'BRIDE',
-        name: 'Er. Parul Sharma',
-        grandparentsLabel: 'Granddaughter of',
-        grandparents: 'Shri Charansingh Sharma & Late Smt. Premadevi Sharma',
-        parentsLabel: 'Daughter of',
-        parents: 'Shri Kamalkant Sharma & Smt. Renu Sharma',
-        city: 'Ujjain',
-        granddaughterOf: 'Granddaughter of: Shri Charansingh Sharma & Late Smt. Premadevi Sharma',
-        daughterOf: 'Daughter of: Shri Kamalkant Sharma & Smt. Renu Sharma (Ujjain)',
-        alt: 'Parul Sharma, the bride',
-      },
+      heading: 'The Groom & Bride',
 
       groom: {
         label: 'GROOM',
@@ -68,45 +55,21 @@ const content = {
         alt: 'Shubham Sharma, the groom',
       },
 
+      bride: {
+        label: 'BRIDE',
+        name: 'Er. Parul Sharma',
+        grandparentsLabel: 'Granddaughter of',
+        grandparents: 'Shri Charansingh Sharma & Late Smt. Premadevi Sharma',
+        parentsLabel: 'Daughter of',
+        parents: 'Shri Kamalkant Sharma & Smt. Renu Sharma',
+        city: 'Ujjain',
+        granddaughterOf: 'Granddaughter of: Shri Charansingh Sharma & Late Smt. Premadevi Sharma',
+        daughterOf: 'Daughter of: Shri Kamalkant Sharma & Smt. Renu Sharma (Ujjain)',
+        alt: 'Parul Sharma, the bride',
+      },
+
       closing:
         'We humbly request your presence at this auspicious celebration',
-    },
-
-    mataPoojan: {
-      eyebrow: 'UJJAIN · AUSPICIOUS CEREMONIES',
-      title: 'Mata Poojan & Snehbhoj',
-      dateBanner: 'Sunday, 15 November 2026',
-      intro:
-        'With traditional Vedic rituals and heartfelt hospitality, we invoke the divine maternal blessings and welcome our cherished family for the celebratory feast.',
-      footerLine: 'WARMLY WELCOMING YOU IN UJJAIN',
-      events: [
-        {
-          id: 'mata-pujan',
-          tag: 'SACRED PUJAN',
-          name: 'Mata Poojan',
-          time: '9:30 AM',
-          timeLabel: 'Morning 9:30 AM',
-          venue: 'Nij Niwas (Family Residence), Ujjain',
-          address: '',
-          mapQuery: 'Nij Niwas Ujjain',
-          desc: 'Auspicious Vedic rituals invoking maternal and divine blessings for happiness, prosperity, and everlasting harmony.',
-        },
-        {
-          id: 'sneh-bhoj',
-          tag: 'FESTIVE FEAST',
-          name: 'Snehbhoj',
-          time: '12:30 PM – 3:30 PM',
-          timeLabel: 'Afternoon 12:30 PM to 3:30 PM',
-          venue: 'Shri Riddhi-Siddhi Vinayak Parisar',
-          address: 'Opp. Gayatri Shakti Peeth, Ankpat Marg, Ujjain (M.P.)',
-          mapQuery: 'Shri Riddhi-Siddhi Vinayak Parisar, Opp. Gayatri Shakti Peeth, Ankpat Marg, Ujjain',
-          desc: 'A joyous traditional feast bringing together family and loved ones to celebrate with warm hospitality and fellowship.',
-        },
-      ],
-      calendarBtn: 'Add to Calendar',
-      mapsBtn: 'View Venue Map',
-      threeTitle: 'SACRED AKHAND JYOTI',
-      threeHint: 'Interactive 3D • Move cursor or tap to sway the sacred flame',
     },
 
     weddingCelebrations: {
@@ -179,13 +142,13 @@ const content = {
     },
 
     couple: {
-      bride: {
-        name: 'Er. Parul Sharma',
-        bio: 'A spirited engineer with a heart full of warmth, Parul brings light to every room she enters.',
-      },
       groom: {
         name: 'Er. Shubham Sharma',
         bio: "A dedicated engineer with a gentle soul, Shubham's quiet strength and kind smile complete every moment.",
+      },
+      bride: {
+        name: 'Er. Parul Sharma',
+        bio: 'A spirited engineer with a heart full of warmth, Parul brings light to every room she enters.',
       },
     },
 
@@ -203,25 +166,6 @@ const content = {
       subheading: 'Join us across these joyful occasions',
       addToCalendar: 'Add to Calendar',
       list: [
-        {
-          id: 'mata-pujan',
-          name: 'Mata Pujan',
-          date: 'Sunday, 15 November 2026',
-          time: '9:30 AM',
-          venue: 'Nij Nivas',
-          address: '55, Gandhi Nagar, Agar Road, Ujjain (M.P.)',
-          icon: 'diya',
-        },
-        {
-          id: 'sneh-bhoj',
-          name: 'Sneh Bhoj',
-          subtitle: 'Family Luncheon',
-          date: 'Sunday, 15 November 2026',
-          time: '12:30 PM – 3:30 PM',
-          venue: 'Shri Riddhi-Siddhi Vinayak Parisar',
-          address: 'Opp. Gayatri Shakti Peeth, Ankpat Marg, Ujjain (M.P.)',
-          icon: 'marigold',
-        },
         {
           id: 'lagna-sagaai',
           name: 'Lagna & Sagaai',
@@ -295,12 +239,12 @@ const content = {
       subheading: 'Awaiting your gracious presence with folded hands & open hearts',
       quote: '“Atithi Devo Bhava” — A guest is the living embodiment of the Divine.',
       message:
-        'Your presence and heartfelt blessings are the most cherished gift for us as we embark upon this sacred journey. With open arms, joyous hearts, and folded hands, both Sharma families cordially welcome you to grace the wedding celebrations of Parul & Shubham.',
+        'Your presence and heartfelt blessings are the most cherished gift for us as we embark upon this sacred journey. With open arms, joyous hearts, and folded hands, both Sharma families cordially welcome you to grace the wedding celebrations of Shubham & Parul.',
       hostsTitle: 'Warmly Welcoming You',
-      hostsBrideLabel: "Bride's Family",
-      hostsBride: 'Shri Kamalkant Sharma & Smt. Renu Sharma (Ujjain)',
       hostsGroomLabel: "Groom's Family",
       hostsGroom: 'Shri Sudhir Kumar Sharma & Smt. Rajbala Sharma (Aligarh)',
+      hostsBrideLabel: "Bride's Family",
+      hostsBride: 'Shri Kamalkant Sharma & Smt. Renu Sharma (Ujjain)',
       hostsAll: 'All Sharma Family, Relatives & Well-wishers',
       venueTitle: 'The Destination Venue',
       venueSubtitle: 'Swarnabhoomi, Aligarh',
@@ -319,16 +263,16 @@ const content = {
       whatsappBtn: 'Send Blessings via WhatsApp',
       callBtn: 'Call Us',
       placeholderName: 'e.g. Sharma Family',
-      placeholderMessage: 'Wishing Parul & Shubham a lifetime of endless joy, love and harmony...',
+      placeholderMessage: 'Wishing Shubham & Parul a lifetime of endless joy, love and harmony...',
       whatsappMessage: (name, message) =>
-        `Namaste 🙏\nHeartiest congratulations to Parul & Shubham! 🌸\n\n"${message || 'Wishing you both a joyful and blessed married life!'}"\n\nWith love and blessings,\n*${name}*`,
+        `Namaste 🙏\nHeartiest congratulations to Shubham & Parul! 🌸\n\n"${message || 'Wishing you both a joyful and blessed married life!'}"\n\nWith love and blessings,\n*${name}*`,
     },
 
     footer: {
       blessing: 'शुभ विवाह 🌸',
       tagline: 'May love, laughter and happily ever after fill your days.',
-      hashtag: '#ParulWedShubham',
-      madeWith: 'Made with ❤️ for Parul & Shubham',
+      hashtag: '#ShubhamWedParul',
+      madeWith: 'Made with ❤️ for Shubham & Parul',
       replayIntro: 'Replay Intro',
       language: 'हिन्दी में देखें',
     },
@@ -343,15 +287,15 @@ const content = {
   // ─── HINDI ────────────────────────────────────────────────────────────────
   hi: {
     meta: {
-      title: 'पारुल & शुभम का शुभ विवाह — 20 नवम्बर 2026',
+      title: 'शुभम & पारुल का शुभ विवाह — 20 नवम्बर 2026',
       description:
-        'परिवार के आशीर्वाद से हम आपको पारुल शर्मा एवं शुभम शर्मा के मंगल परिणयोत्सव में सादर आमंत्रित करते हैं। दिनांक 20 नवम्बर 2026, स्वर्णभूमि, अलीगढ़।',
+        'परिवार के आशीर्वाद से हम आपको शुभम शर्मा एवं पारुल शर्मा के मंगल परिणयोत्सव में सादर आमंत्रित करते हैं। दिनांक 20 नवम्बर 2026, स्वर्णभूमि, अलीगढ़।',
     },
 
     curtain: {
       blessing: 'परिवार के आशीर्वाद से',
       invite: 'हम सादर आमंत्रित करते हैं',
-      brideGroom: 'पारुल एवं शुभम',
+      brideGroom: 'शुभम एवं पारुल',
       date: '20 · नवम्बर · 2026',
       cta: 'निमंत्रण खोलें',
       ctaSub: 'स्पर्श करें',
@@ -359,7 +303,7 @@ const content = {
 
     hero: {
       saveTheDate: 'तिथि याद रखें',
-      names: 'पारुल & शुभम',
+      names: 'शुभम & पारुल',
       date: 'शुक्रवार, 20 नवम्बर 2026',
       guestGreeting: (name) => `आदरणीय ${name},`,
       defaultGreeting: 'आप सादर आमंत्रित हैं',
@@ -374,20 +318,7 @@ const content = {
       invite:
         'स्नेहिल स्वजन, परमपिता परमेश्वर की असीम अनुकम्पा व आशीर्वाद से हमारे परिवार में शुभ प्रसंग का अवसर आया है।',
       sectionLabel: 'सपरिवार सादर आमंत्रण',
-      heading: 'वधू एवं वर परिचय',
-
-      bride: {
-        label: 'वधू',
-        name: 'Er. पारुल शर्मा',
-        grandparentsLabel: 'पौत्री',
-        grandparents: 'श्री चरणसिंह शर्मा एवं स्व. श्रीमती प्रेमादेवी शर्मा',
-        parentsLabel: 'पुत्री',
-        parents: 'श्री कमलकांत शर्मा एवं श्रीमती रेनू शर्मा',
-        city: 'उज्जैन',
-        granddaughterOf: 'पौत्री: श्री चरणसिंह शर्मा एवं स्व. श्रीमती प्रेमादेवी शर्मा',
-        daughterOf: 'पुत्री: श्री कमलकांत शर्मा एवं श्रीमती रेनू शर्मा (उज्जैन)',
-        alt: 'पारुल शर्मा, वधू',
-      },
+      heading: 'वर एवं वधू परिचय',
 
       groom: {
         label: 'वर',
@@ -402,45 +333,21 @@ const content = {
         alt: 'शुभम शर्मा, वर',
       },
 
+      bride: {
+        label: 'वधू',
+        name: 'Er. पारुल शर्मा',
+        grandparentsLabel: 'पौत्री',
+        grandparents: 'श्री चरणसिंह शर्मा एवं स्व. श्रीमती प्रेमादेवी शर्मा',
+        parentsLabel: 'पुत्री',
+        parents: 'श्री कमलकांत शर्मा एवं श्रीमती रेनू शर्मा',
+        city: 'उज्जैन',
+        granddaughterOf: 'पौत्री: श्री चरणसिंह शर्मा एवं स्व. श्रीमती प्रेमादेवी शर्मा',
+        daughterOf: 'पुत्री: श्री कमलकांत शर्मा एवं श्रीमती रेनू शर्मा (उज्जैन)',
+        alt: 'पारुल शर्मा, वधू',
+      },
+
       closing:
         'हम विनम्रतापूर्वक इस शुभ अवसर पर आपकी उपस्थिति का अनुरोध करते हैं',
-    },
-
-    mataPoojan: {
-      eyebrow: 'उज्जैन · मंगल अनुष्ठान',
-      title: 'माता पूजन एवं स्नेहभोज',
-      dateBanner: 'दि. 15 नवम्बर 2026, रविवार',
-      intro:
-        'परमपिता परमेश्वर, कुलदेवी एवं पूज्य पूर्वजों के असीम आशीर्वाद से उज्जैन में आयोजित मांगलिक अनुष्ठान एवं प्रीतिभोज।',
-      footerLine: 'उज्जैन में आपका हार्दिक स्वागत है',
-      events: [
-        {
-          id: 'mata-pujan',
-          tag: 'मांगलिक पूजन',
-          name: 'माता पूजन',
-          time: 'सुबह 9:30 बजे',
-          timeLabel: 'सुबह 9:30 बजे',
-          venue: 'निज निवास (पारिवारिक निवास), उज्जैन',
-          address: '',
-          mapQuery: 'Nij Niwas Ujjain',
-          desc: 'कुलदेवी एवं मातृ शक्तियों की विधि-विधान से पावन आराधना, वधू के मंगलमय जीवन एवं अखण्ड सौभाग्य हेतु प्रार्थना।',
-        },
-        {
-          id: 'sneh-bhoj',
-          tag: 'पारिवारिक स्नेहभोज',
-          name: 'स्नेहभोज',
-          time: 'दोप. 12:30 बजे से 3:30 बजे तक',
-          timeLabel: 'दोप. 12:30 बजे से 3:30 बजे तक',
-          venue: 'श्री रिद्धि–सिद्धि विनायक परिसर',
-          address: 'गायत्री शक्ति पीठ के सामने, अंकपात मार्ग, उज्जैन (म.प्र.)',
-          mapQuery: 'श्री रिद्धि–सिद्धि विनायक परिसर, गायत्री शक्ति पीठ के सामने, अंकपात मार्ग, उज्जैन',
-          desc: 'समस्त स्नेही स्वजनों, इष्ट-मित्रों एवं परिजनों के साथ स्नेहपूर्ण मिलन एवं स्वरुचिभोज का मंगलमय आयोजन।',
-        },
-      ],
-      calendarBtn: 'कैलेंडर में जोड़ें',
-      mapsBtn: 'स्थान का नक्शा देखें',
-      threeTitle: 'पावन अखंड ज्योति',
-      threeHint: 'इंटरैक्टिव 3D • ज्योति को स्पर्श करें या कर्सर घुमाएं',
     },
 
     weddingCelebrations: {
@@ -513,13 +420,13 @@ const content = {
     },
 
     couple: {
-      bride: {
-        name: 'Er. पारुल शर्मा',
-        bio: 'एक प्रतिभाशाली इंजीनियर, जिनकी मुस्कान से हर आँगन रोशन हो जाता है।',
-      },
       groom: {
         name: 'Er. शुभम शर्मा',
         bio: 'एक समर्पित इंजीनियर, जिनका सौम्य स्वभाव और प्रेमिल हृदय हर पल को विशेष बनाता है।',
+      },
+      bride: {
+        name: 'Er. पारुल शर्मा',
+        bio: 'एक प्रतिभाशाली इंजीनियर, जिनकी मुस्कान से हर आँगन रोशन हो जाता है।',
       },
     },
 
@@ -537,25 +444,6 @@ const content = {
       subheading: 'इन मंगल कार्यक्रमों में पधारें',
       addToCalendar: 'कैलेंडर में जोड़ें',
       list: [
-        {
-          id: 'mata-pujan',
-          name: 'माता पूजन',
-          date: 'रविवार, 15 नवम्बर 2026',
-          time: 'सुबह 9:30 बजे',
-          venue: 'निज निवास',
-          address: '55, गाँधी नगर, आगर रोड, उज्जैन (म.प्र.)',
-          icon: 'diya',
-        },
-        {
-          id: 'sneh-bhoj',
-          name: 'स्नेहभोज',
-          subtitle: 'पारिवारिक भोजन',
-          date: 'रविवार, 15 नवम्बर 2026',
-          time: 'दोप. 12:30 से 3:30 बजे',
-          venue: 'श्री रिद्धी-सिद्धी विनायक परिसर',
-          address: 'गायत्री शक्ति पीठ के सामने, अंकपात मार्ग, उज्जैन',
-          icon: 'marigold',
-        },
         {
           id: 'lagna-sagaai',
           name: 'लग्न एवं सगाई',
@@ -625,12 +513,12 @@ const content = {
       subheading: 'आपका हार्दिक व स्नेहिल स्वागत है',
       quote: '“अतिथि देवो भवः” — पधारे हुए अतिथि साक्षात् ईश्वर का रूप होते हैं।',
       message:
-        'आपकी गरिमामयी उपस्थिति और पावन आशीर्वाद ही इस मंगल प्रसंग की सबसे बड़ी शोभा हैं। अगाध स्नेह, आदर एवं करबद्ध प्रार्थना के साथ समस्त शर्मा परिवार पारुल एवं शुभम के शुभ विवाह में आपका हार्दिक व आत्मीय स्वागत करता है।',
+        'आपकी गरिमामयी उपस्थिति और पावन आशीर्वाद ही इस मंगल प्रसंग की सबसे बड़ी शोभा हैं। अगाध स्नेह, आदर एवं करबद्ध प्रार्थना के साथ समस्त शर्मा परिवार शुभम एवं पारुल के शुभ विवाह में आपका हार्दिक व आत्मीय स्वागत करता है।',
       hostsTitle: 'स्वागताकांक्षी एवं दर्शनाभिलाषी',
-      hostsBrideLabel: 'वधू पक्ष',
-      hostsBride: 'श्री कमलकांत शर्मा एवं श्रीमती रेनू शर्मा (उज्जैन)',
       hostsGroomLabel: 'वर पक्ष',
       hostsGroom: 'श्री सुधीर कुमार शर्मा एवं श्रीमती राजबाला शर्मा (अलीगढ़)',
+      hostsBrideLabel: 'वधू पक्ष',
+      hostsBride: 'श्री कमलकांत शर्मा एवं श्रीमती रेनू शर्मा (उज्जैन)',
       hostsAll: 'समस्त शर्मा परिवार, स्वजन एवं मित्रगण',
       venueTitle: 'विवाह स्थल',
       venueSubtitle: 'स्वर्णभूमि, अलीगढ़',
@@ -649,16 +537,16 @@ const content = {
       whatsappBtn: 'WhatsApp पर शुभकामनाएँ भेजें',
       callBtn: 'फ़ोन करें',
       placeholderName: 'जैसे: शर्मा परिवार',
-      placeholderMessage: 'पारुल एवं शुभम को सुखद वैवाहिक जीवन एवं अनंत खुशियों की हार्दिक मंगलकामनाएँ...',
+      placeholderMessage: 'शुभम एवं पारुल को सुखद वैवाहिक जीवन एवं अनंत खुशियों की हार्दिक मंगलकामनाएँ...',
       whatsappMessage: (name, message) =>
-        `नमस्ते 🙏\nपारुल एवं शुभम के शुभ विवाह पर हार्दिक बधाई व मंगलकामनाएँ! 🌸\n\n"${message || 'सदा सुहागन रहो, जीवन में अपार खुशियाँ और प्रेम रहे!'}"\n\nस्नेह और आशीर्वाद सहित,\n*${name}*`,
+        `नमस्ते 🙏\nशुभम एवं पारुल के शुभ विवाह पर हार्दिक बधाई व मंगलकामनाएँ! 🌸\n\n"${message || 'सदा सुहागन रहो, जीवन में अपार खुशियाँ और प्रेम रहे!'}"\n\nस्नेह और आशीर्वाद सहित,\n*${name}*`,
     },
 
     footer: {
       blessing: 'शुभ विवाह 🌸',
       tagline: 'प्रेम, हास्य और खुशियों से भरा जीवन मिले आप दोनों को।',
-      hashtag: '#ParulWedShubham',
-      madeWith: 'प्यार से बनाया गया — पारुल & शुभम के लिए',
+      hashtag: '#ShubhamWedParul',
+      madeWith: 'प्यार से बनाया गया — शुभम & पारुल के लिए',
       replayIntro: 'परिचय फिर देखें',
       language: 'View in English',
     },

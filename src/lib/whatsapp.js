@@ -13,7 +13,7 @@ export function openWhatsAppRSVP({ name, message, guests, events, messageBuilder
   } else if (message) {
     text = `Namaste 🙏\n${message}\n\n— *${name}*`;
   } else {
-    text = `Namaste 🙏\nWith love and blessings from *${name}* for Parul & Shubham! 🌸`;
+    text = `Namaste 🙏\nWith love and blessings from *${name}* for Shubham & Parul! 🌸`;
   }
   const encoded = encodeURIComponent(text);
   const url = `https://wa.me/${RSVP_PHONE}?text=${encoded}`;
