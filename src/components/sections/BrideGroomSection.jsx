@@ -132,14 +132,36 @@ export default function BrideGroomSection() {
           className="text-3xl sm:text-4xl md:text-5xl font-serif font-light text-white tracking-wide text-center"
           style={{
             fontFamily: nameFont,
-            marginBottom: '20px',
+            marginBottom: '16px',
           }}
         >
           {c.heading || (isHindi ? 'वर एवं वधू परिचय' : 'The Groom & Bride')}
         </h2>
 
+        {/* Host Family & Invitation Card */}
+        <div className="w-full max-w-xl mx-auto mb-6 p-4 rounded-2xl bg-white/[0.03] border border-[#8a6f2e]/50 text-center shadow-lg">
+          <span className="text-[11px] sm:text-xs font-mono uppercase tracking-widest text-[#dfc07a] font-semibold block mb-1">
+            {c.sectionLabel}
+          </span>
+          <p className="text-xs sm:text-sm text-white/80 font-light mb-2.5 leading-relaxed" style={{ fontFamily: familyFont }}>
+            {c.residence}
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-2 pt-2 border-t border-white/5 text-[11px] text-[#c5a059] font-mono">
+            <span className="text-white/50">{isHindi ? 'मोबाईल:' : 'Mob.'}</span>
+            {['9456404490', '9412733977', '8532954590', '9999751920'].map((p) => (
+              <a
+                key={p}
+                href={`tel:+91${p}`}
+                className="px-2 py-0.5 rounded bg-white/[0.05] hover:bg-[#c5a059] hover:text-[#0e0e10] transition-colors"
+              >
+                {p}
+              </a>
+            ))}
+          </div>
+        </div>
+
         {/* EN | हिंदी Language Toggle */}
-        <div style={{ marginBottom: '44px' }} className="flex justify-center">
+        <div style={{ marginBottom: '36px' }} className="flex justify-center">
           <button
             onClick={toggle}
             aria-label={isHindi ? 'Switch language to English' : 'भाषा हिन्दी में बदलें'}
@@ -321,32 +343,7 @@ export default function BrideGroomSection() {
                 padding: '22px 20px',
               }}
             >
-              {/* Relation Group 1: Grandparents */}
-              <div className="w-full text-center">
-                <span
-                  className="block text-[11px] uppercase tracking-[0.22em] text-[#c5a059] font-medium"
-                  style={{ marginBottom: '6px' }}
-                >
-                  {c.bride.grandparentsLabel}
-                </span>
-                <p
-                  className="text-[15px] sm:text-base text-white/95 leading-relaxed font-light break-words"
-                  style={{
-                    fontFamily: familyFont,
-                    lineHeight: isHindi ? '1.68' : '1.5',
-                  }}
-                >
-                  {c.bride.grandparents}
-                </p>
-              </div>
-
-              {/* Thin Divider separating the two groups with equal spacing */}
-              <div
-                className="w-16 h-[1px] bg-[#8a6f2e]/40 mx-auto"
-                style={{ marginBlock: '16px' }}
-              />
-
-              {/* Relation Group 2: Parents */}
+              {/* Relation Group 1: Parents (Daughter of) */}
               <div className="w-full text-center">
                 <span
                   className="block text-[11px] uppercase tracking-[0.22em] text-[#c5a059] font-medium"
@@ -370,6 +367,31 @@ export default function BrideGroomSection() {
                       ({c.bride.city})
                     </span>
                   )}
+                </p>
+              </div>
+
+              {/* Thin Divider separating the two groups with equal spacing */}
+              <div
+                className="w-16 h-[1px] bg-[#8a6f2e]/40 mx-auto"
+                style={{ marginBlock: '16px' }}
+              />
+
+              {/* Relation Group 2: Grandparents (Granddaughter of) */}
+              <div className="w-full text-center">
+                <span
+                  className="block text-[11px] uppercase tracking-[0.22em] text-[#c5a059] font-medium"
+                  style={{ marginBottom: '6px' }}
+                >
+                  {c.bride.grandparentsLabel}
+                </span>
+                <p
+                  className="text-[15px] sm:text-base text-white/95 leading-relaxed font-light break-words"
+                  style={{
+                    fontFamily: familyFont,
+                    lineHeight: isHindi ? '1.68' : '1.5',
+                  }}
+                >
+                  {c.bride.grandparents}
                 </p>
               </div>
             </div>

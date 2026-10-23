@@ -1,10 +1,24 @@
 'use client';
 
 import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
 import { motion, useReducedMotion } from 'framer-motion';
 import { useLanguage } from '@/hooks/useLanguage';
 import content from '@/content/content';
+import { generateICS, EVENT_ISO } from '@/lib/ics';
 import styles from './WeddingCelebrations.module.css';
+
+const EventThreeCanvas = dynamic(
+  () => import('@/components/three/EventThreeCanvas'),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="w-full h-full flex flex-col items-center justify-center min-h-[300px]">
+        <div className="w-8 h-8 rounded-full border-2 border-[#c5a059]/30 border-t-[#c5a059] animate-spin" />
+      </div>
+    ),
+  }
+);
 
 /**
  * Icons matching the exact aesthetic of Mata Poojan Section
@@ -88,6 +102,37 @@ function ExternalMapIcon() {
       <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
       <polyline points="15 3 21 3 21 9" />
       <line x1="10" y1="14" x2="21" y2="3" />
+    </svg>
+  );
+}
+
+function SunIllustration() {
+  return (
+    <svg
+      width="140"
+      height="140"
+      viewBox="0 0 100 100"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="drop-shadow-[0_8px_24px_rgba(242,140,40,0.45)]"
+      aria-hidden="true"
+    >
+      <circle cx="50" cy="50" r="22" fill="#d4af37" opacity="0.9" />
+      <circle cx="50" cy="50" r="32" stroke="#f28c28" strokeWidth="2.5" strokeDasharray="4 3" />
+      {[0, 45, 90, 135, 180, 225, 270, 315].map((ang, i) => (
+        <line
+          key={i}
+          x1={50 + Math.cos((ang * Math.PI) / 180) * 24}
+          y1={50 + Math.sin((ang * Math.PI) / 180) * 24}
+          x2={50 + Math.cos((ang * Math.PI) / 180) * 40}
+          y2={50 + Math.sin((ang * Math.PI) / 180) * 40}
+          stroke="#f28c28"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+        />
+      ))}
+      <circle cx="50" cy="50" r="14" fill="#fff4d4" />
+      <text x="50" y="55" textAnchor="middle" fill="#8a6f2e" fontSize="15" fontWeight="bold">卐</text>
     </svg>
   );
 }
@@ -313,13 +358,19 @@ export default function WeddingCelebrations() {
 
               {/* 3D Canvas / Fallback Illustration Area */}
               <div
-                className={`${styles.wcStageCanvasArea || ''} wc-stage-canvas-area`}
+                className={`${styles.wcStageCanvasArea || ''} wc-stage-canvas-area relative w-full h-[320px] sm:h-[360px] flex items-center justify-center overflow-hidden`}
                 role="img"
                 aria-label={c.threeAlt || '3D Ceremony Visualization'}
               >
-                {activeEventIndex === 0 && <RingsIllustration />}
-                {activeEventIndex === 1 && <GarlandIllustration />}
-                {activeEventIndex === 2 && <KalashIllustration />}
+                {!prefersReducedMotion ? (
+                  <EventThreeCanvas activeEventId={c.events[activeEventIndex]?.threeId || c.events[activeEventIndex]?.id || 'ghudchadi'} />
+                ) : (
+                  <>
+                    {activeEventIndex === 0 && <SunIllustration />}
+                    {activeEventIndex === 1 && <RingsIllustration />}
+                    {activeEventIndex === 2 && <KalashIllustration />}
+                  </>
+                )}
               </div>
 
               {/* Stage Footer with Controls & Caption */}
@@ -477,7 +528,18 @@ export default function WeddingCelebrations() {
             <div className={`${styles.wcVenueActions || ''} wc-venue-actions`}>
               <button
                 type="button"
-                className={`${styles.wcPrimaryBtn || ''} wc-primary-btn`}
+                onClick={() => {
+                  const ev = c.events[activeEventIndex] || c.events[0];
+                  generateICS({
+                    name: `${ev.title} (${c.venue.name})`,
+                    dateISO: EVENT_ISO[ev.id] || '2026-11-20T12:00:00+05:30',
+                    durationMinutes: 180,
+                    venue: c.venue.name,
+                    address: c.venue.address,
+                    description: `${ev.title} — Shubham & Parul Wedding Ceremony at ${c.venue.name}`,
+                  });
+                }}
+                className={`${styles.wcPrimaryBtn || ''} wc-primary-btn cursor-pointer`}
                 aria-label={c.venue.calendarBtn}
               >
                 <CalendarIcon />

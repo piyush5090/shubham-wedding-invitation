@@ -5,7 +5,7 @@ import ModernNavbar from '@/components/ui/ModernNavbar';
 import ModernHero from '@/components/hero/ModernHero';
 import BrideGroomSection from '@/components/sections/BrideGroomSection';
 import WeddingCelebrations from '@/components/sections/WeddingCelebrations';
-import VidaaiSection from '@/components/sections/VidaaiSection';
+import ReceptionSection from '@/components/sections/ReceptionSection';
 import ModernCountdown from '@/components/sections/ModernCountdown';
 import ModernRsvpVenue from '@/components/sections/ModernRsvpVenue';
 import ModernFooter from '@/components/sections/ModernFooter';
@@ -50,13 +50,13 @@ export default function WeddingPage() {
       {/* 2. Groom & Bride Introduction */}
       <BrideGroomSection />
 
-      {/* 3. The Wedding Celebrations */}
+      {/* 3. 20th Nov: The Wedding Celebrations (Shaadi at Swarnbhoomi) */}
       <WeddingCelebrations />
 
-      {/* 2d. Vidaai */}
-      <VidaaiSection />
+      {/* 4. 21st Nov: The Wedding Reception (Reception at Mangal Dham) */}
+      <ReceptionSection />
 
-      {/* 3. Countdown to Forever */}
+      {/* 5. Countdown to Forever */}
       <ModernCountdown />
 
       {/* 4. You Are Warmly Welcome & Destination */}

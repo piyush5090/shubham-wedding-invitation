@@ -40,8 +40,8 @@ export function generateICS({ name, dateISO, durationMinutes = 120, venue, addre
 
 /** ISO strings for each event for calendar generation */
 export const EVENT_ISO = {
-  'lagna-sagaai':  '2026-11-20T16:00:00+05:30',
-  'baraat':        '2026-11-20T19:00:00+05:30',
-  'ashirwad':      '2026-11-20T19:30:00+05:30',
-  'vidai':         '2026-11-21T06:00:00+05:30',
+  'ghudchadi':    '2026-11-20T12:00:00+05:30',
+  'lagan-sagai':  '2026-11-20T14:00:00+05:30',
+  'dinner':       '2026-11-20T18:00:00+05:30',
+  'reception':    '2026-11-21T16:00:00+05:30',
 };

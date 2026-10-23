@@ -136,122 +136,93 @@ export default function EventThreeCanvas({ activeEventId = 'lagna-sagaai' }) {
 
     // Build Event Specific 3D Artwork
     switch (activeEventId) {
-      case 'mata-pujan': {
-        // ── 1. Sacred Diya & Spiritual Embers ──
-        // Diya bowl
-        const bowlGeo = new THREE.CylinderGeometry(1.2, 0.4, 0.6, 32);
+      case 'ghudchadi': {
+        // ── 1. Royal Ghudchadi: Golden Processional Sun & Celebratory Aura ──
+        const sunGroup = new THREE.Group();
+
+        // Central Royal Sun Wheel
+        const centerGeo = new THREE.CylinderGeometry(0.7, 0.7, 0.15, 32);
         const goldMat = new THREE.MeshStandardMaterial({
           color: 0xd4af37,
-          metalness: 0.85,
-          roughness: 0.25,
+          metalness: 0.9,
+          roughness: 0.2,
         });
-        const bowl = new THREE.Mesh(bowlGeo, goldMat);
-        bowl.position.y = -0.6;
-        group.add(bowl);
+        const sunCenter = new THREE.Mesh(centerGeo, goldMat);
+        sunCenter.rotation.x = Math.PI / 2;
+        sunGroup.add(sunCenter);
 
-        // Diya flame (Teardrop shape)
-        const flameGeo = new THREE.ConeGeometry(0.35, 1.1, 16);
-        const flameMat = new THREE.MeshStandardMaterial({
+        // Radiant Royal Sun Rays (16 rays)
+        const rayGeo = new THREE.ConeGeometry(0.12, 1.4, 8);
+        const rayMat = new THREE.MeshStandardMaterial({
           color: 0xf28c28,
-          emissive: 0xffaa33,
-          emissiveIntensity: 1.5,
-          roughness: 0.1,
+          metalness: 0.8,
+          roughness: 0.25,
+          emissive: 0x994400,
+          emissiveIntensity: 0.4,
         });
-        const flame = new THREE.Mesh(flameGeo, flameMat);
-        flame.position.y = 0.2;
-        flame.userData.onUpdate = (t) => {
-          flame.scale.y = 1 + Math.sin(t * 8) * 0.12;
-          flame.scale.x = 1 + Math.cos(t * 7) * 0.08;
-          flame.scale.z = 1 + Math.sin(t * 6) * 0.08;
-        };
-        group.add(flame);
 
-        // Sacred rising embers particles
-        const emberCount = 120;
-        const emberGeo = new THREE.BufferGeometry();
-        const emberPositions = new Float32Array(emberCount * 3);
-        const emberSpeeds = new Float32Array(emberCount);
-
-        for (let i = 0; i < emberCount; i++) {
-          emberPositions[i * 3] = (Math.random() - 0.5) * 1.5;
-          emberPositions[i * 3 + 1] = Math.random() * 2.5 - 0.5;
-          emberPositions[i * 3 + 2] = (Math.random() - 0.5) * 1.5;
-          emberSpeeds[i] = 0.5 + Math.random() * 0.8;
+        for (let i = 0; i < 16; i++) {
+          const ray = new THREE.Mesh(rayGeo, i % 2 === 0 ? rayMat : goldMat);
+          const angle = (i / 16) * Math.PI * 2;
+          ray.position.set(Math.cos(angle) * 1.3, Math.sin(angle) * 1.3, 0);
+          ray.rotation.z = angle - Math.PI / 2;
+          sunGroup.add(ray);
         }
 
-        emberGeo.setAttribute('position', new THREE.BufferAttribute(emberPositions, 3));
-        const emberMat = new THREE.PointsMaterial({
+        // Royal Inner Ring
+        const ringGeo = new THREE.TorusGeometry(1.4, 0.06, 16, 64);
+        const innerRing = new THREE.Mesh(ringGeo, goldMat);
+        sunGroup.add(innerRing);
+
+        sunGroup.userData.onUpdate = (t) => {
+          sunGroup.rotation.z = t * 0.3;
+          sunGroup.scale.setScalar(1 + Math.sin(t * 3) * 0.05);
+        };
+        group.add(sunGroup);
+
+        // Celebratory Stardust & Swirling Golden Sparks (140 particles)
+        const sparkCount = 140;
+        const sparkGeo = new THREE.BufferGeometry();
+        const sparkPos = new Float32Array(sparkCount * 3);
+        const sparkSpeeds = new Float32Array(sparkCount);
+        const sparkRadius = new Float32Array(sparkCount);
+        const sparkAngles = new Float32Array(sparkCount);
+
+        for (let i = 0; i < sparkCount; i++) {
+          sparkAngles[i] = Math.random() * Math.PI * 2;
+          sparkRadius[i] = 1.0 + Math.random() * 2.2;
+          sparkSpeeds[i] = 0.5 + Math.random() * 0.8;
+          sparkPos[i * 3] = Math.cos(sparkAngles[i]) * sparkRadius[i];
+          sparkPos[i * 3 + 1] = Math.sin(sparkAngles[i]) * sparkRadius[i];
+          sparkPos[i * 3 + 2] = (Math.random() - 0.5) * 1.4;
+        }
+
+        sparkGeo.setAttribute('position', new THREE.BufferAttribute(sparkPos, 3));
+        const sparkMat = new THREE.PointsMaterial({
           color: 0xffd700,
-          size: 0.07,
+          size: 0.075,
           transparent: true,
-          opacity: 0.85,
+          opacity: 0.9,
           blending: THREE.AdditiveBlending,
         });
-        const embers = new THREE.Points(emberGeo, emberMat);
-        embers.userData.onUpdate = (_, delta) => {
-          const pos = emberGeo.attributes.position.array;
-          for (let i = 0; i < emberCount; i++) {
-            pos[i * 3 + 1] += emberSpeeds[i] * delta;
-            if (pos[i * 3 + 1] > 2.5) {
-              pos[i * 3 + 1] = -0.5;
-              pos[i * 3] = (Math.random() - 0.5) * 1.2;
-              pos[i * 3 + 2] = (Math.random() - 0.5) * 1.2;
-            }
+        const sparks = new THREE.Points(sparkGeo, sparkMat);
+        sparks.userData.onUpdate = (t, delta) => {
+          const pos = sparkGeo.attributes.position.array;
+          for (let i = 0; i < sparkCount; i++) {
+            sparkAngles[i] += sparkSpeeds[i] * delta;
+            pos[i * 3] = Math.cos(sparkAngles[i]) * sparkRadius[i];
+            pos[i * 3 + 1] = Math.sin(sparkAngles[i]) * sparkRadius[i];
+            pos[i * 3 + 2] += Math.sin(t * 2 + i) * 0.003;
           }
-          emberGeo.attributes.position.needsUpdate = true;
+          sparkGeo.attributes.position.needsUpdate = true;
         };
-        group.add(embers);
+        group.add(sparks);
         break;
       }
 
-      case 'sneh-bhoj': {
-        // ── 2. Festive Saffron & Golden Petals Swarm ──
-        const petalCount = 80;
-        const petalGroup = new THREE.Group();
-        const petalMat1 = new THREE.MeshStandardMaterial({
-          color: 0xf28c28,
-          roughness: 0.4,
-          side: THREE.DoubleSide,
-        });
-        const petalMat2 = new THREE.MeshStandardMaterial({
-          color: 0xd4af37,
-          metalness: 0.5,
-          roughness: 0.3,
-          side: THREE.DoubleSide,
-        });
-
-        const petalGeo = new THREE.CylinderGeometry(0.08, 0.22, 0.03, 8);
-
-        for (let i = 0; i < petalCount; i++) {
-          const mesh = new THREE.Mesh(petalGeo, i % 2 === 0 ? petalMat1 : petalMat2);
-          const angle = (i / petalCount) * Math.PI * 2;
-          const radius = 0.8 + (i % 5) * 0.35;
-          const y = (Math.random() - 0.5) * 2.2;
-          mesh.position.set(Math.cos(angle) * radius, y, Math.sin(angle) * radius);
-          mesh.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI);
-          mesh.userData.baseAngle = angle;
-          mesh.userData.radius = radius;
-          mesh.userData.speed = 0.4 + Math.random() * 0.4;
-          mesh.userData.rotSpeed = 1 + Math.random() * 2;
-          petalGroup.add(mesh);
-        }
-
-        petalGroup.userData.onUpdate = (t) => {
-          petalGroup.children.forEach((p) => {
-            p.userData.baseAngle += p.userData.speed * 0.015;
-            p.position.x = Math.cos(p.userData.baseAngle) * p.userData.radius;
-            p.position.z = Math.sin(p.userData.baseAngle) * p.userData.radius;
-            p.position.y += Math.sin(t + p.userData.radius) * 0.005;
-            p.rotation.x += p.userData.rotSpeed * 0.01;
-            p.rotation.y += p.userData.rotSpeed * 0.015;
-          });
-        };
-        group.add(petalGroup);
-        break;
-      }
-
+      case 'lagan-sagai':
       case 'lagna-sagaai': {
-        // ── 3. Interlocking 3D Golden Wedding Rings with Diamond Sparkle ──
+        // ── 2. Interlocking 3D Golden Wedding Rings with Diamond Sparkle ──
         const ringGeo = new THREE.TorusGeometry(1.1, 0.12, 24, 64);
         const ringMatGold = new THREE.MeshStandardMaterial({
           color: 0xd4af37,
@@ -276,25 +247,25 @@ export default function EventThreeCanvas({ activeEventId = 'lagna-sagaai' }) {
         group.add(ring2);
 
         // Diamond Solitaire on Ring 1
-        const gemGeo = new THREE.OctahedronGeometry(0.28, 2);
+        const gemGeo = new THREE.OctahedronGeometry(0.3, 2);
         const gemMat = new THREE.MeshStandardMaterial({
           color: 0xffffff,
           metalness: 0.1,
           roughness: 0.05,
-          emissive: 0x99ccff,
-          emissiveIntensity: 0.8,
+          emissive: 0xd4af37,
+          emissiveIntensity: 0.9,
         });
         const gem = new THREE.Mesh(gemGeo, gemMat);
         gem.position.set(0, 1.2, 0);
         ring1.add(gem);
 
         // Diamond Sparkle Particles
-        const sparkleCount = 60;
+        const sparkleCount = 80;
         const sparkleGeo = new THREE.BufferGeometry();
         const sparklePos = new Float32Array(sparkleCount * 3);
         for (let i = 0; i < sparkleCount; i++) {
           const theta = Math.random() * Math.PI * 2;
-          const r = 0.5 + Math.random() * 1.5;
+          const r = 0.5 + Math.random() * 1.6;
           sparklePos[i * 3] = Math.cos(theta) * r;
           sparklePos[i * 3 + 1] = (Math.random() - 0.5) * 1.8;
           sparklePos[i * 3 + 2] = Math.sin(theta) * r;
@@ -302,35 +273,164 @@ export default function EventThreeCanvas({ activeEventId = 'lagna-sagaai' }) {
         sparkleGeo.setAttribute('position', new THREE.BufferAttribute(sparklePos, 3));
         const sparkleMat = new THREE.PointsMaterial({
           color: 0xffffff,
-          size: 0.06,
+          size: 0.065,
           transparent: true,
-          opacity: 0.8,
+          opacity: 0.85,
           blending: THREE.AdditiveBlending,
         });
         const sparkles = new THREE.Points(sparkleGeo, sparkleMat);
+        sparkles.userData.onUpdate = (t) => {
+          sparkles.rotation.y = t * 0.15;
+        };
         group.add(sparkles);
         break;
       }
 
-      case 'baraat': {
-        // ── 4. Celebratory Fireworks & Golden Confetti Burst ──
-        const count = 180;
-        const burstGeo = new THREE.BufferGeometry();
-        const positions = new Float32Array(count * 3);
-        const velocities = new Float32Array(count * 3);
-        const colors = new Float32Array(count * 3);
+      case 'dinner':
+      case 'ashirwad-bhoj': {
+        // ── 3. Festive Dinner: Sacred Golden Kalash & Swirling Floral Petals ──
+        const dinnerGroup = new THREE.Group();
+
+        // Golden Kalash Pot
+        const potGeo = new THREE.SphereGeometry(0.85, 32, 24);
+        const goldMat = new THREE.MeshStandardMaterial({
+          color: 0xd4af37,
+          metalness: 0.9,
+          roughness: 0.2,
+        });
+        const pot = new THREE.Mesh(potGeo, goldMat);
+        pot.scale.set(1, 1.15, 1);
+        pot.position.y = -0.4;
+        dinnerGroup.add(pot);
+
+        // Pot Neck & Rim
+        const rimGeo = new THREE.TorusGeometry(0.48, 0.08, 16, 32);
+        const rim = new THREE.Mesh(rimGeo, goldMat);
+        rim.rotation.x = Math.PI / 2;
+        rim.position.y = 0.55;
+        dinnerGroup.add(rim);
+
+        // Sacred Coconut (Shriphal) on Top
+        const coconutGeo = new THREE.SphereGeometry(0.4, 24, 20);
+        const coconutMat = new THREE.MeshStandardMaterial({
+          color: 0x8a5322,
+          roughness: 0.6,
+        });
+        const coconut = new THREE.Mesh(coconutGeo, coconutMat);
+        coconut.scale.set(0.9, 1.25, 0.9);
+        coconut.position.y = 0.9;
+        dinnerGroup.add(coconut);
+
+        dinnerGroup.userData.onUpdate = (t) => {
+          dinnerGroup.rotation.y = t * 0.4;
+        };
+        group.add(dinnerGroup);
+
+        // Swirling Festive Petals (80 petals: saffron and gold)
+        const petalCount = 80;
+        const petalGroup = new THREE.Group();
+        const petalMat1 = new THREE.MeshStandardMaterial({
+          color: 0xf28c28,
+          roughness: 0.4,
+          side: THREE.DoubleSide,
+        });
+        const petalMat2 = new THREE.MeshStandardMaterial({
+          color: 0xd4af37,
+          metalness: 0.5,
+          roughness: 0.3,
+          side: THREE.DoubleSide,
+        });
+        const petalGeo = new THREE.CylinderGeometry(0.08, 0.22, 0.03, 8);
+
+        for (let i = 0; i < petalCount; i++) {
+          const mesh = new THREE.Mesh(petalGeo, i % 2 === 0 ? petalMat1 : petalMat2);
+          const angle = (i / petalCount) * Math.PI * 2;
+          const radius = 1.1 + (i % 5) * 0.35;
+          const y = (Math.random() - 0.5) * 2.4;
+          mesh.position.set(Math.cos(angle) * radius, y, Math.sin(angle) * radius);
+          mesh.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI);
+          mesh.userData.baseAngle = angle;
+          mesh.userData.radius = radius;
+          mesh.userData.speed = 0.5 + Math.random() * 0.5;
+          mesh.userData.rotSpeed = 1 + Math.random() * 2;
+          petalGroup.add(mesh);
+        }
+
+        petalGroup.userData.onUpdate = (t) => {
+          petalGroup.children.forEach((p) => {
+            p.userData.baseAngle += p.userData.speed * 0.015;
+            p.position.x = Math.cos(p.userData.baseAngle) * p.userData.radius;
+            p.position.z = Math.sin(p.userData.baseAngle) * p.userData.radius;
+            p.position.y += Math.sin(t + p.userData.radius) * 0.005;
+            p.rotation.x += p.userData.rotSpeed * 0.01;
+            p.rotation.y += p.userData.rotSpeed * 0.015;
+          });
+        };
+        group.add(petalGroup);
+        break;
+      }
+
+      case 'reception':
+      case 'ashirwad': {
+        // ── 4. Grand Reception: Celestial Starlight Chandelier & Fireworks ──
+        const receptionGroup = new THREE.Group();
+
+        // 3 Concentric Golden Gyroscopic Rings
+        const ringMat = new THREE.MeshStandardMaterial({
+          color: 0xd4af37,
+          metalness: 0.95,
+          roughness: 0.15,
+        });
+
+        const r1 = new THREE.Mesh(new THREE.TorusGeometry(1.6, 0.05, 16, 64), ringMat);
+        const r2 = new THREE.Mesh(new THREE.TorusGeometry(1.2, 0.05, 16, 64), ringMat);
+        const r3 = new THREE.Mesh(new THREE.TorusGeometry(0.8, 0.05, 16, 64), ringMat);
+
+        receptionGroup.add(r1);
+        receptionGroup.add(r2);
+        receptionGroup.add(r3);
+
+        // Core Radiant Diamond Orb
+        const orbGeo = new THREE.IcosahedronGeometry(0.45, 2);
+        const orbMat = new THREE.MeshStandardMaterial({
+          color: 0xffffff,
+          metalness: 0.2,
+          roughness: 0.05,
+          emissive: 0xd4af37,
+          emissiveIntensity: 0.9,
+        });
+        const orb = new THREE.Mesh(orbGeo, orbMat);
+        receptionGroup.add(orb);
+
+        receptionGroup.userData.onUpdate = (t) => {
+          r1.rotation.x = t * 0.5;
+          r1.rotation.y = t * 0.3;
+          r2.rotation.y = t * 0.6;
+          r2.rotation.z = t * 0.4;
+          r3.rotation.z = t * 0.7;
+          r3.rotation.x = t * 0.5;
+          orb.rotation.y = t * 0.8;
+          orb.scale.setScalar(1 + Math.sin(t * 3) * 0.08);
+        };
+        group.add(receptionGroup);
+
+        // Celebratory Fireworks & Starlight Dust (180 particles)
+        const starCount = 180;
+        const starGeo = new THREE.BufferGeometry();
+        const positions = new Float32Array(starCount * 3);
+        const velocities = new Float32Array(starCount * 3);
+        const colors = new Float32Array(starCount * 3);
 
         const colGold = new THREE.Color(0xd4af37);
+        const colChampagne = new THREE.Color(0xf4ebd9);
         const colSaffron = new THREE.Color(0xf28c28);
-        const colRose = new THREE.Color(0xff4466);
 
-        for (let i = 0; i < count; i++) {
-          // Spherical distribution
+        for (let i = 0; i < starCount; i++) {
           const u = Math.random();
           const v = Math.random();
           const theta = u * 2.0 * Math.PI;
           const phi = Math.acos(2.0 * v - 1.0);
-          const speed = 0.8 + Math.random() * 1.6;
+          const speed = 0.8 + Math.random() * 1.5;
 
           velocities[i * 3] = Math.sin(phi) * Math.cos(theta) * speed;
           velocities[i * 3 + 1] = Math.sin(phi) * Math.sin(theta) * speed;
@@ -340,128 +440,35 @@ export default function EventThreeCanvas({ activeEventId = 'lagna-sagaai' }) {
           positions[i * 3 + 1] = 0;
           positions[i * 3 + 2] = 0;
 
-          const chosenCol = i % 3 === 0 ? colGold : i % 3 === 1 ? colSaffron : colRose;
+          const chosenCol = i % 3 === 0 ? colGold : i % 3 === 1 ? colChampagne : colSaffron;
           colors[i * 3] = chosenCol.r;
           colors[i * 3 + 1] = chosenCol.g;
           colors[i * 3 + 2] = chosenCol.b;
         }
 
-        burstGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        burstGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+        starGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        starGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
-        const burstMat = new THREE.PointsMaterial({
-          size: 0.08,
+        const starMat = new THREE.PointsMaterial({
+          size: 0.075,
           vertexColors: true,
           transparent: true,
           opacity: 0.9,
           blending: THREE.AdditiveBlending,
         });
 
-        const burstPoints = new THREE.Points(burstGeo, burstMat);
-        burstPoints.userData.onUpdate = (t) => {
-          const pos = burstGeo.attributes.position.array;
-          const cycle = (t * 0.8) % 2.5; // loop explosion every 2.5s
-          for (let i = 0; i < count; i++) {
+        const starPoints = new THREE.Points(starGeo, starMat);
+        starPoints.userData.onUpdate = (t) => {
+          const pos = starGeo.attributes.position.array;
+          const cycle = (t * 0.75) % 2.6;
+          for (let i = 0; i < starCount; i++) {
             pos[i * 3] = velocities[i * 3] * cycle;
-            pos[i * 3 + 1] = velocities[i * 3 + 1] * cycle - 0.3 * (cycle * cycle); // gravity
+            pos[i * 3 + 1] = velocities[i * 3 + 1] * cycle - 0.25 * (cycle * cycle);
             pos[i * 3 + 2] = velocities[i * 3 + 2] * cycle;
           }
-          burstGeo.attributes.position.needsUpdate = true;
+          starGeo.attributes.position.needsUpdate = true;
         };
-        group.add(burstPoints);
-        break;
-      }
-
-      case 'ashirwad': {
-        // ── 5. Starlight Galaxy & Champagne Shimmer Vortex ──
-        const starCount = 220;
-        const starGeo = new THREE.BufferGeometry();
-        const starPos = new Float32Array(starCount * 3);
-
-        for (let i = 0; i < starCount; i++) {
-          const rad = 0.5 + Math.pow(Math.random(), 2) * 2.2;
-          const theta = Math.random() * Math.PI * 2;
-          starPos[i * 3] = Math.cos(theta) * rad;
-          starPos[i * 3 + 1] = (Math.random() - 0.5) * 1.5;
-          starPos[i * 3 + 2] = Math.sin(theta) * rad;
-        }
-        starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
-        const starMat = new THREE.PointsMaterial({
-          color: 0xf4ebd9,
-          size: 0.065,
-          transparent: true,
-          opacity: 0.85,
-          blending: THREE.AdditiveBlending,
-        });
-        const starVortex = new THREE.Points(starGeo, starMat);
-        starVortex.userData.onUpdate = (t) => {
-          starVortex.rotation.y = t * 0.4;
-          starVortex.rotation.z = Math.sin(t * 0.3) * 0.2;
-        };
-        group.add(starVortex);
-
-        // Core Golden Orb
-        const orbGeo = new THREE.SphereGeometry(0.5, 32, 32);
-        const orbMat = new THREE.MeshStandardMaterial({
-          color: 0xd4af37,
-          metalness: 0.9,
-          roughness: 0.1,
-          emissive: 0x443300,
-        });
-        const orb = new THREE.Mesh(orbGeo, orbMat);
-        group.add(orb);
-        break;
-      }
-
-      case 'vidai': {
-        // ── 6. Sacred Floating Lotus Blossom ──
-        const lotusGroup = new THREE.Group();
-        const petalShapeGeo = new THREE.ConeGeometry(0.35, 1.2, 5);
-        const petalMat = new THREE.MeshStandardMaterial({
-          color: 0xffe4e8,
-          roughness: 0.3,
-          metalness: 0.2,
-        });
-
-        // 8 outer petals
-        for (let i = 0; i < 8; i++) {
-          const p = new THREE.Mesh(petalShapeGeo, petalMat);
-          const angle = (i / 8) * Math.PI * 2;
-          p.position.set(Math.cos(angle) * 0.7, 0, Math.sin(angle) * 0.7);
-          p.rotation.set(0.6, 0, 0);
-          p.rotation.y = -angle + Math.PI / 2;
-          lotusGroup.add(p);
-        }
-
-        // 6 inner petals
-        const innerPetalMat = new THREE.MeshStandardMaterial({
-          color: 0xd4af37,
-          metalness: 0.8,
-          roughness: 0.2,
-        });
-        for (let i = 0; i < 6; i++) {
-          const p = new THREE.Mesh(petalShapeGeo, innerPetalMat);
-          p.scale.set(0.7, 0.7, 0.7);
-          const angle = (i / 6) * Math.PI * 2;
-          p.position.set(Math.cos(angle) * 0.4, 0.1, Math.sin(angle) * 0.4);
-          p.rotation.set(0.4, 0, 0);
-          p.rotation.y = -angle + Math.PI / 2;
-          lotusGroup.add(p);
-        }
-
-        // Lotus Center Seed Pod
-        const podGeo = new THREE.CylinderGeometry(0.3, 0.2, 0.25, 16);
-        const podMat = new THREE.MeshStandardMaterial({ color: 0xf28c28, roughness: 0.2 });
-        const pod = new THREE.Mesh(podGeo, podMat);
-        pod.position.y = 0.1;
-        lotusGroup.add(pod);
-
-        lotusGroup.userData.onUpdate = (t) => {
-          lotusGroup.position.y = Math.sin(t * 1.5) * 0.15;
-          lotusGroup.rotation.y = t * 0.2;
-        };
-
-        group.add(lotusGroup);
+        group.add(starPoints);
         break;
       }
 

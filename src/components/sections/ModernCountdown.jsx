@@ -7,7 +7,14 @@ import { WEDDING_DATE } from '@/content/config';
 
 export default function ModernCountdown() {
   const { lang } = useLanguage();
-  const c = content[lang].countdown;
+  const c = content[lang]?.countdown || {
+    heading: lang === 'hi' ? 'शुभ मुहूर्त की प्रतीक्षा' : 'Counting Down to Forever',
+    days: lang === 'hi' ? 'दिन' : 'Days',
+    hours: lang === 'hi' ? 'घंटे' : 'Hours',
+    minutes: lang === 'hi' ? 'मिनट' : 'Minutes',
+    seconds: lang === 'hi' ? 'सेकंड' : 'Seconds',
+    past: lang === 'hi' ? 'उत्सव आरम्भ हो चुका है!' : 'The celebration has begun!',
+  };
   const [mounted, setMounted] = useState(false);
   const [timeLeft, setTimeLeft] = useState({
     days: 0,

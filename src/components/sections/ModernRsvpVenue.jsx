@@ -165,55 +165,73 @@ export default function ModernRsvpVenue() {
 
               {/* Heartfelt Message */}
               <p
-                className="text-ivory/85 text-sm sm:text-base leading-relaxed font-light mb-6"
+                className="text-ivory/85 text-sm sm:text-base leading-relaxed font-light mb-5"
                 style={{ fontFamily: bodyFont }}
               >
                 {cWelcome.message}
               </p>
 
-              {/* Decorative Divider */}
-              <div className="flex items-center gap-3 my-5">
-                <span className="h-[1px] flex-1 bg-white/10" />
-                <span className="text-gold-warm text-xs">✦</span>
-                <span className="h-[1px] flex-1 bg-white/10" />
-              </div>
-
-              {/* Welcoming Hosts / स्वागताकांक्षी */}
-              <div>
-                <span
-                  className="text-xs uppercase tracking-[0.25em] text-gold-warm font-medium block mb-3.5"
-                  style={{ fontFamily: headingFont }}
-                >
+              {/* Host Residence & Contacts Block */}
+              <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.02] border border-[#8a6f2e]/40 mb-5">
+                <span className="text-[11px] uppercase tracking-wider text-gold-warm font-mono block mb-1">
                   {cWelcome.hostsTitle}
                 </span>
+                <h4 className="text-lg sm:text-xl font-serif text-white font-medium mb-1.5" style={{ fontFamily: headingFont }}>
+                  {cWelcome.invitationFrom}
+                </h4>
+                <p className="text-xs sm:text-sm text-ivory/80 font-light mb-3 leading-relaxed">
+                  <span className="text-gold-warm/80 font-mono text-[11px] block uppercase">{cWelcome.residenceLabel}:</span>
+                  {cWelcome.residenceAddress}
+                </p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3.5">
-                  <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5">
-                    <span className="text-[10px] uppercase tracking-wider text-gold-warm/80 font-mono block mb-1">
-                      {cWelcome.hostsGroomLabel}
-                    </span>
-                    <p className="text-xs sm:text-sm text-ivory/90 font-light">
-                      {cWelcome.hostsGroom}
-                    </p>
-                  </div>
-
-                  <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5">
-                    <span className="text-[10px] uppercase tracking-wider text-gold-warm/80 font-mono block mb-1">
-                      {cWelcome.hostsBrideLabel}
-                    </span>
-                    <p className="text-xs sm:text-sm text-ivory/90 font-light">
-                      {cWelcome.hostsBride}
-                    </p>
+                <div className="pt-2 border-t border-white/5">
+                  <span className="text-[10px] uppercase tracking-wider text-gold-warm/80 font-mono block mb-2">
+                    {cWelcome.contactLabel}
+                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    {cWelcome.contacts?.map((phone) => (
+                      <a
+                        key={phone}
+                        href={`tel:+91${phone}`}
+                        className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] hover:bg-[#c5a059] text-ivory/90 hover:text-black font-mono text-xs transition-colors"
+                      >
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                        </svg>
+                        <span>{phone}</span>
+                      </a>
+                    ))}
                   </div>
                 </div>
-
-                <p className="text-xs text-ivory/60 italic font-light">
-                  ✦ {cWelcome.hostsAll}
-                </p>
               </div>
+
+              {/* Welcoming Families */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+                <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
+                  <span className="text-[10px] uppercase tracking-wider text-gold-warm/80 font-mono block mb-1">
+                    {cWelcome.hostsGroomLabel}
+                  </span>
+                  <p className="text-xs sm:text-sm text-ivory/90 font-light">
+                    {cWelcome.hostsGroom}
+                  </p>
+                </div>
+
+                <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
+                  <span className="text-[10px] uppercase tracking-wider text-gold-warm/80 font-mono block mb-1">
+                    {cWelcome.hostsBrideLabel}
+                  </span>
+                  <p className="text-xs sm:text-sm text-ivory/90 font-light">
+                    {cWelcome.hostsBride}
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-xs text-ivory/60 italic font-light">
+                ✦ {cWelcome.hostsAll}
+              </p>
             </motion.div>
 
-            {/* Card 2: Destination Venue & Directions */}
+            {/* Card 2: Both Destination Venues & Directions */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -223,82 +241,59 @@ export default function ModernRsvpVenue() {
             >
               <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#c5a059]/40 to-transparent" />
 
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-                {/* Photo thumbnail */}
-                <div className="md:col-span-5 relative h-36 md:h-40 rounded-2xl overflow-hidden border border-white/10 shadow-md">
-                  <Image
-                    src="/images/couple/couple-05.jpg"
-                    alt="Swarnabhoomi Venue"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 30vw"
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
-                  <div className="absolute bottom-3 left-3">
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-[#dfc07a] block">
-                      {cWelcome.venueTitle}
+              <div className="space-y-6">
+                {/* Venue 1: Swarnbhoomi (20 Nov Shaadi) */}
+                <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.02] border border-white/5 flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+                  <div className="flex-1">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-[#dfc07a] block mb-1">
+                      {cWelcome.venue1Title}
                     </span>
-                    <span className="text-xs font-serif text-ivory font-medium">
-                      {cWelcome.venueSubtitle}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Venue Info & Buttons */}
-                <div className="md:col-span-7 flex flex-col justify-between h-full">
-                  <div>
-                    <h3
-                      className="text-xl sm:text-2xl font-serif text-ivory mb-1"
-                      style={{ fontFamily: headingFont }}
-                    >
-                      {cWelcome.venueSubtitle}
+                    <h3 className="text-xl font-serif text-ivory mb-1" style={{ fontFamily: headingFont }}>
+                      {cWelcome.venue1Name}
                     </h3>
-                    <p className="text-ivory/70 text-xs sm:text-sm leading-relaxed mb-4 font-light">
-                      {cWelcome.venueAddress}
+                    <p className="text-ivory/70 text-xs sm:text-sm font-light">
+                      {cWelcome.venue1Address}
                     </p>
                   </div>
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=Swarnbhoomi+7th+milestone+Near+khareswar+mandir+khair+road+Aligarh+Uttar+Pradesh+202140"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="py-2.5 px-4 rounded-full bg-[#c5a059] hover:bg-[#dfc07a] text-[#0e0e10] font-semibold text-xs tracking-wider uppercase flex items-center gap-1.5 transition-all shadow shrink-0"
+                  >
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                      <circle cx="12" cy="9" r="2.5" />
+                    </svg>
+                    <span>{cWelcome.mapButton}</span>
+                  </a>
+                </div>
 
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <a
-                      href={MAP_LINK}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 py-3 px-5 rounded-full bg-[#c5a059] hover:bg-[#dfc07a] text-[#0e0e10] font-semibold text-xs tracking-wider uppercase flex items-center justify-center gap-2 transition-all cursor-pointer shadow-lg active:scale-[0.98]"
-                    >
-                      <svg
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2.2"
-                      >
-                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-                        <circle cx="12" cy="9" r="2.5" />
-                      </svg>
-                      {cWelcome.mapButton}
-                    </a>
-
-                    {RSVP_PHONE && (
-                      <button
-                        type="button"
-                        onClick={callRSVP}
-                        className="py-3 px-5 rounded-full border border-white/15 hover:border-gold-warm text-ivory/80 hover:text-gold-warm text-xs tracking-wider uppercase transition-colors flex items-center justify-center gap-2 cursor-pointer"
-                      >
-                        <svg
-                          width="13"
-                          height="13"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                        >
-                          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                        </svg>
-                        {cWelcome.callButton}
-                      </button>
-                    )}
+                {/* Venue 2: Mangal Dham (21 Nov Reception) */}
+                <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.02] border border-white/5 flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+                  <div className="flex-1">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-[#dfc07a] block mb-1">
+                      {cWelcome.venue2Title}
+                    </span>
+                    <h3 className="text-xl font-serif text-ivory mb-1" style={{ fontFamily: headingFont }}>
+                      {cWelcome.venue2Name}
+                    </h3>
+                    <p className="text-ivory/70 text-xs sm:text-sm font-light">
+                      {cWelcome.venue2Address}
+                    </p>
                   </div>
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=Mangal+Dham+Mangal+Vihar+Colony+Kamakhaya+Mandir+Road+Bannadevi+Aligarh"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="py-2.5 px-4 rounded-full border border-[#8a6f2e]/60 hover:border-[#c5a059] text-white hover:text-gold-warm font-semibold text-xs tracking-wider uppercase flex items-center gap-1.5 transition-all shadow shrink-0"
+                  >
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                      <circle cx="12" cy="9" r="2.5" />
+                    </svg>
+                    <span>{cWelcome.mapButton}</span>
+                  </a>
                 </div>
               </div>
             </motion.div>
