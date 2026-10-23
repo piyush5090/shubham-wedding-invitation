@@ -25,8 +25,12 @@ export default function EventThreeCanvas({ activeEventId = 'lagna-sagaai' }) {
     const container = containerRef.current;
     if (!container) return;
 
-    const width = container.clientWidth || 400;
-    const height = container.clientHeight || 400;
+    const rect = container.getBoundingClientRect();
+    const parentW = container.parentElement ? container.parentElement.clientWidth : 0;
+    const initialW = container.clientWidth || rect.width || parentW || (typeof window !== 'undefined' ? window.innerWidth - 64 : 320);
+    const initialH = container.clientHeight || rect.height || 320;
+    const width = Math.max(180, Math.min(initialW, typeof window !== 'undefined' ? window.innerWidth - 48 : 360));
+    const height = Math.max(200, initialH);
 
     // 1. Scene, Camera, Renderer
     const scene = new THREE.Scene();
@@ -38,6 +42,12 @@ export default function EventThreeCanvas({ activeEventId = 'lagna-sagaai' }) {
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'high-performance' });
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.domElement.style.width = '100%';
+    renderer.domElement.style.height = '100%';
+    renderer.domElement.style.maxWidth = '100%';
+    renderer.domElement.style.maxHeight = '100%';
+    renderer.domElement.style.display = 'block';
+    renderer.domElement.style.objectFit = 'contain';
     rendererRef.current = renderer;
     container.replaceChildren(renderer.domElement);
 

@@ -17,10 +17,19 @@
   position: relative;
   z-index: 10;
   width: min(1200px, calc(100% - 48px));
+  max-width: 100%;
+  box-sizing: border-box;
   margin-inline: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+@media (max-width: 699px) {
+  .wcContainer,
+  .wc-container {
+    width: min(1200px, calc(100% - 32px));
+  }
 }
 
 /* ─── Header Block ─── */
@@ -33,6 +42,7 @@
   gap: 12px;
   margin-bottom: 14px;
   text-align: center;
+  max-width: 100%;
 }
 
 .wcEyebrowLine,
@@ -41,6 +51,13 @@
   height: 1px;
   background-color: rgba(138, 111, 46, 0.6);
   flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  .wcEyebrowLine,
+  .wc-eyebrow-line {
+    width: 28px;
+  }
 }
 
 .wcEyebrowText,
@@ -100,9 +117,11 @@
 .wcGrid,
 .wc-grid {
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 32px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 28px;
   align-items: start;
 }
 
@@ -119,6 +138,8 @@
 .wcStageCol,
 .wc-stage-col {
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 @media (min-width: 1100px) {
@@ -136,8 +157,9 @@
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   min-height: 480px;
-  height: 480px;
   border-radius: 28px;
   position: relative;
   overflow: hidden;
@@ -147,20 +169,19 @@
   padding: 24px 24px 18px 24px;
 }
 
-@media (max-width: 1099px) and (min-width: 700px) {
+@media (min-width: 700px) and (max-width: 1099px) {
   .wcStageCard,
   .wc-stage-card {
     min-height: 380px;
-    height: 380px;
   }
 }
 
 @media (max-width: 699px) {
   .wcStageCard,
   .wc-stage-card {
-    min-height: 320px;
-    height: 320px;
-    padding: 20px 18px 14px 18px;
+    min-height: 340px;
+    padding: 16px 14px 14px 14px;
+    border-radius: 22px;
   }
 }
 
@@ -169,9 +190,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   z-index: 10;
   user-select: none;
+  width: 100%;
+  max-width: 100%;
 }
 
 .wcStageHeaderLine,
@@ -182,20 +205,37 @@
   flex-shrink: 0;
 }
 
+@media (max-width: 480px) {
+  .wcStageHeaderLine,
+  .wc-stage-header-line {
+    width: 14px;
+  }
+}
+
 .wcStageHeaderLabel,
 .wc-stage-header-label {
   font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.16em;
   color: #c5a059;
   font-weight: 500;
+  text-align: center;
   white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .wcStageHeaderLabel,
+  .wc-stage-header-label {
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+  }
 }
 
 .wcStageCanvasArea,
 .wc-stage-canvas-area {
   position: relative;
   width: 100%;
+  max-width: 100%;
   flex: 1;
   display: flex;
   align-items: center;
@@ -266,6 +306,9 @@
 .wc-timeline-col {
   position: relative;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -275,7 +318,7 @@
 @media (max-width: 699px) {
   .wcTimelineCol,
   .wc-timeline-col {
-    padding-left: 24px;
+    padding-left: 20px;
     gap: 16px;
   }
 }
@@ -298,7 +341,7 @@
 @media (max-width: 699px) {
   .wcTimelineTrack,
   .wc-timeline-track {
-    left: 7px;
+    left: 5px;
   }
 }
 
@@ -306,6 +349,9 @@
 .wc-timeline-card-wrapper {
   position: relative;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .wcTimelineDiamond,
@@ -325,10 +371,10 @@
 @media (max-width: 699px) {
   .wcTimelineDiamond,
   .wc-timeline-diamond {
-    left: -23px;
+    left: -19px;
     width: 10px;
     height: 10px;
-    top: 26px;
+    top: 24px;
   }
 }
 
@@ -357,6 +403,8 @@
   -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  width: 100%;
+  max-width: 100%;
   min-width: 0;
   cursor: pointer;
 }
@@ -377,7 +425,8 @@
 @media (max-width: 699px) {
   .wcEventCard,
   .wc-event-card {
-    padding: 24px 20px 24px;
+    padding: 20px 16px 20px;
+    border-radius: 20px;
   }
 }
 
@@ -488,6 +537,8 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   margin-top: 36px;
   padding: 36px 32px 32px;
   border-radius: 28px;
@@ -503,8 +554,9 @@
 @media (max-width: 699px) {
   .wcVenueCard,
   .wc-venue-card {
-    padding: 24px 20px 24px;
-    margin-top: 28px;
+    padding: 20px 16px 20px;
+    border-radius: 20px;
+    margin-top: 24px;
   }
 }
 
@@ -513,6 +565,9 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 @media (min-width: 900px) {
@@ -529,6 +584,8 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  width: 100%;
+  max-width: 100%;
   min-width: 0;
 }
 
@@ -554,6 +611,7 @@
   color: #ffffff;
   font-weight: 400;
   letter-spacing: 0.02em;
+  word-break: break-word;
 }
 
 .wcVenueLocationRow,
@@ -570,6 +628,7 @@
   font-size: 14px;
   color: rgba(255, 255, 255, 0.75);
   line-height: 1.5;
+  word-break: break-word;
 }
 
 .wcVenueActions,
@@ -578,7 +637,9 @@
   flex-direction: column;
   gap: 12px;
   flex-shrink: 0;
-  min-width: 280px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 @media (min-width: 600px) and (max-width: 899px) {
@@ -594,6 +655,8 @@
   .wc-venue-actions {
     flex-direction: row;
     align-items: center;
+    width: auto;
+    min-width: 280px;
   }
 }
 
@@ -602,7 +665,7 @@
 .wcPrimaryBtn,
 .wc-primary-btn {
   width: 100%;
-  height: 46px;
+  min-height: 46px;
   border-radius: 999px;
   margin: 0;
   display: inline-flex;
@@ -620,7 +683,19 @@
   transition: all 0.2s ease;
   text-decoration: none;
   white-space: nowrap;
-  padding-inline: 20px;
+  padding: 12px 18px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 480px) {
+  .wcPrimaryBtn,
+  .wc-primary-btn {
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    padding: 10px 14px;
+    white-space: normal;
+    text-align: center;
+  }
 }
 
 .wcPrimaryBtn:hover,
@@ -639,7 +714,7 @@
 .wcSecondaryBtn,
 .wc-secondary-btn {
   width: 100%;
-  height: 46px;
+  min-height: 46px;
   border-radius: 999px;
   margin: 0;
   display: inline-flex;
@@ -657,7 +732,19 @@
   transition: all 0.2s ease;
   text-decoration: none;
   white-space: nowrap;
-  padding-inline: 20px;
+  padding: 12px 18px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 480px) {
+  .wcSecondaryBtn,
+  .wc-secondary-btn {
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    padding: 10px 14px;
+    white-space: normal;
+    text-align: center;
+  }
 }
 
 .wcSecondaryBtn:hover,
